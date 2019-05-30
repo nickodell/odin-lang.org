@@ -1,20 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Refs on Odin Programming Language</title>
-    <link>/ref/</link>
+    <link>https://odin-lang.org/ref/</link>
     <description>Recent content in Refs on Odin Programming Language</description>
     <language>en-gb</language>
     
-        <atom:link href="/ref/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://odin-lang.org/ref/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>The Odin Programming Language Specification</title>
-      <link>/spec/</link>
+      <link>https://odin-lang.org/ref/the-odin-programming-language-specification/</link>
       <pubDate>Mon, 01 Jan 0001 11:120:06 +0000</pubDate>
       
-      <guid>/spec/</guid>
+      <guid>https://odin-lang.org/ref/the-odin-programming-language-specification/</guid>
       <description>Introduction This is a reference manual for the Odin programming language.
 Odin is a general-purpose language designed for systems programming. It is a strongly typed language with manual memory management. Programs are constructed from packages.
 Notation The syntax is specified using Extended Backus-Naur Form (EBNF):

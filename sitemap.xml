@@ -3,56 +3,69 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/quine-in-odin/</loc>
+    <loc>https://odin-lang.org/blog/2019/03/10/quine-in-odin/</loc>
     <lastmod>2019-03-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/category/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/docs/</loc>
-  </url>
-  
-  <url>
-    <loc>/help/</loc>
-  </url>
-  
-  <url>
-    <loc>/</loc>
+    <loc>https://odin-lang.org/</loc>
     <lastmod>2019-03-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/ref/</loc>
+    <loc>https://odin-lang.org/tags/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/series/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/blog/</loc>
+    <loc>https://odin-lang.org/blog/</loc>
     <lastmod>2019-03-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/spec/</loc>
+    <loc>https://odin-lang.org/tags/quine/</loc>
+    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/quine/</loc>
-    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
+    <loc>https://odin-lang.org/category/</loc>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://odin-lang.org/docs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://odin-lang.org/docs/faq/</loc>
+  </url>
+  
+  <url>
+    <loc>https://odin-lang.org/docs/install/</loc>
+  </url>
+  
+  <url>
+    <loc>https://odin-lang.org/help/</loc>
+  </url>
+  
+  <url>
+    <loc>https://odin-lang.org/docs/overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://odin-lang.org/ref/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://odin-lang.org/series/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://odin-lang.org/ref/the-odin-programming-language-specification/</loc>
   </url>
   
 </urlset>
