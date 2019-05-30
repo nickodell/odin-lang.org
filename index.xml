@@ -64,10 +64,10 @@ package main import &amp;quot;core:fmt&amp;quot; main :: proc() { fmt.println(&a
     
     <item>
       <title>The Odin Programming Language Specification</title>
-      <link>https://odin-lang.org/ref/the-odin-programming-language-specification/</link>
+      <link>https://odin-lang.org/ref/spec/</link>
       <pubDate>Mon, 01 Jan 0001 11:120:06 +0000</pubDate>
       
-      <guid>https://odin-lang.org/ref/the-odin-programming-language-specification/</guid>
+      <guid>https://odin-lang.org/ref/spec/</guid>
       <description>Introduction This is a reference manual for the Odin programming language.
 Odin is a general-purpose language designed for systems programming. It is a strongly typed language with manual memory management. Programs are constructed from packages.
 Notation The syntax is specified using Extended Backus-Naur Form (EBNF):
