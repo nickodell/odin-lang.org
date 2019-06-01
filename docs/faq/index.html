@@ -211,16 +211,19 @@ Derived_By_Ptr :: struct {
 
 <p>The design goals of Odin were explicitness and simplicity. Implicit procedure overloading complicates the scoping system. In C++, you cannot nest procedures within procedures so all procedure look-ups are done at the global scope. In Odin, procedures can be nested within procedures and as a result, determining which procedure should be used, in the case of implicit overloading, is complex.</p>
 
-<p>Explicit overloading has many advantages:
-* Explicitness of what is overloaded
-* Able to refer to the specific procedure if needed
-* Clear which scope the entity name belongs to</p>
+<p>Explicit overloading has many advantages:</p>
+
+<ul>
+<li>Explicitness of what is overloaded</li>
+<li>Able to refer to the specific procedure if needed</li>
+
+<li><p>Clear which scope the entity name belongs to</p>
 
 <pre><code class="language-odin">foo :: proc{
-    foo_bar,
-    foo_baz,
-    foo_baz2,
-    another_thing_entirely,
+foo_bar,
+foo_baz,
+foo_baz2,
+another_thing_entirely,
 };
 </code></pre>
 
@@ -239,7 +242,8 @@ Derived_By_Ptr :: struct {
 
 My_Int :: distinct int;
 #assert(My_Int != int);
-</code></pre>
+</code></pre></li>
+</ul>
 
 <h3 id="what-is-the-type-of-x-in-x-123">What is the type of <code>x</code> in <code>x := 123;</code>?</h3>
 

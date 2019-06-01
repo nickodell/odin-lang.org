@@ -418,10 +418,13 @@ my_variable: int;
 
 <h4 id="basic-for-loop">Basic for loop</h4>
 
-<p>A basic <code>for</code> loop has three components separated by semicolons:
-* The initial statement: executed before the first iteration
-* The condition expression: evaluated before every iteration
-* The post statement: executed at the end of every iteration</p>
+<p>A basic <code>for</code> loop has three components separated by semicolons:</p>
+
+<ul>
+<li>The initial statement: executed before the first iteration</li>
+<li>The condition expression: evaluated before every iteration</li>
+<li>The post statement: executed at the end of every iteration</li>
+</ul>
 
 <p>The loop will stop executing when the condition is evaluates to <code>false</code>.</p>
 
@@ -677,12 +680,15 @@ defer os.close(f);
 
 <h3 id="when-statement">When statement</h3>
 
-<p>The <code>when</code> statement is almost identical to the <code>if</code> statement but with some differences:
-* Each condition must be a constant expression as a <code>when</code> statement is evaluated at compile time.
-* The statements within a branch do not create a new scope
-* The compiler checks the semantics and code <strong>only</strong> for statements that belong to the first condition that is <code>true</code>
-* An initial statement is not allowed in a <code>when</code> statement
-* <code>when</code> statements are allowed at file scope</p>
+<p>The <code>when</code> statement is almost identical to the <code>if</code> statement but with some differences:</p>
+
+<ul>
+<li>Each condition must be a constant expression as a <code>when</code> statement is evaluated at compile time.</li>
+<li>The statements within a branch do not create a new scope</li>
+<li>The compiler checks the semantics and code <strong>only</strong> for statements that belong to the first condition that is <code>true</code></li>
+<li>An initial statement is not allowed in a <code>when</code> statement</li>
+<li><code>when</code> statements are allowed at file scope</li>
+</ul>
 
 <p>Example:</p>
 
@@ -1263,17 +1269,20 @@ y: Direction_Set;
 y = {.North, .West};
 </code></pre>
 
-<p>Bit sets support the following operations:
-* <code>A | B</code> - union of two sets
-* <code>A &amp; B</code> - intersection of two sets
-* <code>A &amp;~ B</code> - difference of two sets (A without B&rsquo;s elements)
-* <code>A ~ B</code> - symmetric difference (Elements that are in A and B but not both)
-* <code>A == B</code> - set equality
-* <code>A != B</code> - set inequality
-* <code>e in A</code> - set membership (A contains element e)
-* <code>e notin A</code> - A does not contain element e
-* <code>incl(&amp;A, elem)</code> - same as <code>A |= {elem};</code>
-* <code>excl(&amp;A, elem)</code> - same as <code>A &amp;~= {elem};</code></p>
+<p>Bit sets support the following operations:</p>
+
+<ul>
+<li><code>A | B</code> - union of two sets</li>
+<li><code>A &amp; B</code> - intersection of two sets</li>
+<li><code>A &amp;~ B</code> - difference of two sets (A without B&rsquo;s elements)</li>
+<li><code>A ~ B</code> - symmetric difference (Elements that are in A and B but not both)</li>
+<li><code>A == B</code> - set equality</li>
+<li><code>A != B</code> - set inequality</li>
+<li><code>e in A</code> - set membership (A contains element e)</li>
+<li><code>e notin A</code> - A does not contain element e</li>
+<li><code>incl(&amp;A, elem)</code> - same as <code>A |= {elem};</code></li>
+<li><code>excl(&amp;A, elem)</code> - same as <code>A &amp;~= {elem};</code></li>
+</ul>
 
 <p>Bit sets are often used to denote flags. This is much cleaner than defining integer constants that need to be bitwise or-ed together.</p>
 
