@@ -73,6 +73,7 @@ Bill originally tried to create a preprocessor for C to augment and add new capa
 <li><a href="#what-have-been-the-major-influences-in-the-language-s-design">What have been the major influences in the language&rsquo;s design?</a></li>
 <li><a href="#how-is-odin-licensed">How is Odin licensed?</a></li>
 <li><a href="#does-odin-have-any-third-party-library">Does Odin have any third-party library?</a></li>
+<li><a href="#what-does-odin-offer-over-other-languages">What does Odin offer over other languages?</a></li>
 </ul></li>
 <li><a href="#design">Design</a>
 <ul>
@@ -121,6 +122,7 @@ Bill originally tried to create a preprocessor for C to augment and add new capa
 <ul>
 <li><a href="#what-does-mean">What does <code>:=</code> mean?</a></li>
 <li><a href="#what-does-mean-1">What does <code>::</code> mean?</a></li>
+<li><a href="#why-does-odin-not-use-keywords-to-prefix-declarations">Why does Odin not use keywords to prefix declarations?</a></li>
 <li><a href="#why-are-two-ways-to-do-type-conversions">Why are two ways to do type conversions?</a></li>
 <li><a href="#why-curly-brackets">Why curly brackets?</a></li>
 <li><a href="#why-semicolons">Why semicolons?</a></li>
@@ -138,7 +140,10 @@ Bill originally tried to create a preprocessor for C to augment and add new capa
 <li><a href="#does-odin-have-c-style-constructors">Does Odin have C++-style constructors?</a></li>
 <li><a href="#does-odin-have-c-style-copy-constructors">Does Odin have C++-style copy constructors?</a></li>
 <li><a href="#does-odin-have-c-style-move-constructors">Does Odin have C++-style move constructors?</a></li>
-<li><a href="#does-odin-have-c-style-destructors">Does Odin have C++-style destructors?</a></li>
+<li><a href="#does-odin-have-c-style-destructors">Does Odin have C++-style destructors?</a>
+<ul>
+<li><a href="#deferred-attributes">Deferred Attributes</a></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -167,7 +172,102 @@ Bill originally tried to create a preprocessor for C to augment and add new capa
 
 <h3 id="does-odin-have-any-third-party-library">Does Odin have any third-party library?</h3>
 
-<p>Check out a view selected libraries at <a href="https://github.com/odin-lang/odin-libs">https://github.com/odin-lang/odin-libs</a>.</p>
+<p>Check out a few selected libraries at <a href="https://github.com/odin-lang/odin-libs">https://github.com/odin-lang/odin-libs</a>.</p>
+
+<h3 id="what-does-odin-offer-over-other-languages">What does Odin offer over other languages?</h3>
+
+<p>A quick overview of features (in no particular order):</p>
+
+<ul>
+<li>Full UTF-8 Support</li>
+<li>Custom allocators that are simple to use:
+
+<ul>
+<li>Memory arenas/regions, pools, stacks, etc. which can be easily added</li>
+</ul></li>
+<li><a href="#context-system">Context system</a> for allocations, logging, and thread data</li>
+<li>Built-in types and procedures that take advantage over the context system:
+
+<ul>
+<li><code>new(type)</code>, and <code>make</code> use the context&rsquo;s allocator (unless explicitly given)</li>
+<li>Dynamic arrays and hash maps (<code>[dynamic]int</code> and <code>map[string]int</code>)</li>
+</ul></li>
+<li>Array programming
+
+<ul>
+<li><code>a, b: [4]f32; c := a * b;</code></li>
+<li><code>i := a.x * b.y;</code></li>
+<li><code>v := swizzle(a, 1, 2, 0);</code></li>
+</ul></li>
+<li><a href="#why-does-odin-have-explicit-procedure-overloading-but-not-implicit-procedure-overloading">Explicit procedure overloading</a></li>
+<li>Introspection on all types</li>
+<li>High control over memory layout
+
+<ul>
+<li>Alignment</li>
+<li>Field offsets</li>
+<li>Endianness</li>
+<li>Data sizes</li>
+</ul></li>
+<li>Endian specific integer types (useful for specific data formats)
+
+<ul>
+<li><code>u32le</code></li>
+<li><code>u64be</code></li>
+</ul></li>
+<li>Decent <a href="#packages">package</a> system and file handling</li>
+<li>No <em>bad</em> preprocessor</li>
+<li>Type inference
+
+<ul>
+<li><code>x: int = 1;</code></li>
+<li><code>x := 1; // x is deduced to be an int</code></li>
+</ul></li>
+<li><code>using</code>
+
+<ul>
+<li>making everything a namespacing (similar to Pascal&rsquo;s <code>with</code> but on steroids)</li>
+<li>Ability to have <a href="#is-odin-an-objective-oriented-language">subtype polymorphism</a></li>
+</ul></li>
+<li>Multiple return values</li>
+<li>Clean, consistent, and fast to parse syntax</li>
+<li>No need for procedure prototypes</li>
+<li><a href="/docs/overview/#defer-statement"><code>defer</code> statements</a>
+
+<ul>
+<li>defer a statement until the end of scope (akin to D&rsquo;s <code>scope(exit)</code>)</li>
+</ul></li>
+<li>Nested procedures and types</li>
+<li>Tagged unions and untagged unions</li>
+<li>Ranged <code>for</code> loops</li>
+<li><a href="/docs/overview/#branch-statements">Labelled branches</a>
+
+<ul>
+<li><code>break label_name;</code></li>
+</ul></li>
+<li><code>break</code> by default in <code>switch</code> statements
+
+<ul>
+<li>Explicit <code>fallthrough</code></li>
+</ul></li>
+<li>&ldquo;Raw&rdquo; strings
+
+<ul>
+<li><code>x := `what &quot;the&quot; string?`;</code></li>
+</ul></li>
+<li><code>cstring</code> for legacy use</li>
+<li><a href="/docs/overview/#parametric-polymorphism">Parametric polymorphism</a> (&ldquo;generics&rdquo;)</li>
+<li><a href="/docs/overview/#foreign-system">Foreign system</a></li>
+<li>Compile time <a href="/docs/overview/#when-statement"><code>when</code> statements</a></li>
+<li>Bounds checking which is togglable at the statement level:
+
+<ul>
+<li><code>#no_bounds_check</code> <code>#bounds_check</code></li>
+</ul></li>
+<li><code>i128</code> and <code>u128</code> support</li>
+</ul>
+
+<p>And lots more!</p>
 
 <h2 id="design">Design</h2>
 
@@ -182,6 +282,8 @@ Bill originally tried to create a preprocessor for C to augment and add new capa
 <p>Coupling exceptions to a control structure, as in the try-catch-finally idiom, complicates the understanding of the program.</p>
 
 <p>Odin uses plain error handling through the use of multiple return values. It is clear which procedure the error value is from compared to a <code>try-catch</code> approach which is akin to the <a href="https://en.wikipedia.org/wiki/COMEFROM">COMEFROM</a> statement.</p>
+
+<p>Please see gingerBill&rsquo;s article for more information: <a href="https://www.gingerbill.org/article/2018/09/05/exceptions-and-why-odin-will-never-have-them/">Exceptions — And Why Odin Will Never Have Them</a>.</p>
 
 <h2 id="types">Types</h2>
 
@@ -216,14 +318,14 @@ Derived_By_Ptr :: struct {
 <ul>
 <li>Explicitness of what is overloaded</li>
 <li>Able to refer to the specific procedure if needed</li>
-
-<li><p>Clear which scope the entity name belongs to</p>
+<li>Clear which scope the entity name belongs to</li>
+</ul>
 
 <pre><code class="language-odin">foo :: proc{
-foo_bar,
-foo_baz,
-foo_baz2,
-another_thing_entirely,
+    foo_bar,
+    foo_baz,
+    foo_baz2,
+    another_thing_entirely,
 };
 </code></pre>
 
@@ -242,8 +344,7 @@ another_thing_entirely,
 
 My_Int :: distinct int;
 #assert(My_Int != int);
-</code></pre></li>
-</ul>
+</code></pre>
 
 <h3 id="what-is-the-type-of-x-in-x-123">What is the type of <code>x</code> in <code>x := 123;</code>?</h3>
 
@@ -447,11 +548,19 @@ Z :: proc() {};
 Z : proc() : proc() {}; // Redundant type declaration
 </code></pre>
 
+<h3 id="why-does-odin-not-use-keywords-to-prefix-declarations">Why does Odin not use keywords to prefix declarations?</h3>
+
+<p>Please see gingerBill&rsquo;s article <a href="https://www.gingerbill.org/article/2018/03/12/on-the-aesthetics-of-the-syntax-of-declarations/">On the Aesthetics of the Syntax of Declarations</a>.</p>
+
 <h3 id="why-are-two-ways-to-do-type-conversions">Why are two ways to do type conversions?</h3>
 
 <pre><code class="language-odin">cast(type)value
 type(value) or (type)(value)
 </code></pre>
+
+<p>The reason that there are two ways to do type conversions is because one approach may <em>feel</em> better than the other case. If you are converting a large expression, it sometimes a lot easier to use the operator-style approach, <code>cast(type)</code>. The call syntax is commonly used to specify a type of an expression which may be relatively short such as <code>u32(123)</code> or <code>uintptr(ptr)</code>.</p>
+
+<p>There are two other type conversion operators, <a href="/docs/overview/#type-conversion">transmute</a> and <a href="/docs/overview/#auto-cast-operation">auto_cast</a>.</p>
 
 <h3 id="why-curly-brackets">Why curly brackets?</h3>
 
@@ -466,7 +575,7 @@ type(value) or (type)(value)
 <h3 id="what-does-the-compiler-use">What does the compiler use?</h3>
 
 <p>The compiler is written in C++ but in a very C style.
-For the current backend, LLVM is used to translate code to platform specific code.</p>
+For the current backend, LLVM is used to translate code to platform specific code. A custom backend is in development.</p>
 
 <h2 id="changes-from-c-c">Changes from C/C++</h2>
 
@@ -504,16 +613,17 @@ a := int(123);
 
 <h3 id="why-are-there-no-or-operators">Why are there no <code>++</code> or <code>--</code> operators?</h3>
 
-<p>Pre-increment and post-increment, and the decrement equivalents, look simple but are complex. They require knowledge of the evaluation order and lead to subtle bugs. <code>f(i++)</code> or <code>a[++i] = b[i]</code> are both confusing. Removing this is a significant simplification</p>
+<p>Pre-increment and post-increment, and the decrement equivalents, look simple but are complex. They require knowledge of the evaluation order and lead to subtle bugs. <code>f(i++)</code> or <code>a[++i] = b[i]</code> are both confusing, even if the rules are well defined. Removing this is a significant simplification.</p>
 
-<p><code>x += 1</code> is slightly longer but it is unambiguous.</p>
+<p><code>x += 1;</code> is slightly longer but it is unambiguous.</p>
 
 <h3 id="does-odin-have-c-style-constructors">Does Odin have C++-style constructors?</h3>
 
 <p>No. The philosophy for Odin is that the zero value should be useful. By default, all variables are initialized to zero unless told otherwise with the <code>---</code> value.</p>
 
-<pre><code class="language-odin">x: int; // initialized to zero
-y: int = ---; // uninitialized memory
+<pre><code class="language-odin">x: int;       // initialized to zero
+y: int = 0;   // explicitly initialized to zero
+z: int = ---; // uninitialized memory
 </code></pre>
 
 <h3 id="does-odin-have-c-style-copy-constructors">Does Odin have C++-style copy constructors?</h3>
@@ -535,6 +645,43 @@ if err != os.ERROR_NONE {
 defer os.close(f); // will be executed at the end of the scope
 
 ...
+</code></pre>
+
+<h4 id="deferred-attributes">Deferred Attributes</h4>
+
+<p>There is also the <code>deferred_*</code> attributes which can be attached to procedures to have very useful functionality, such as <a href="https://en.wikipedia.org/wiki/Immediate_Mode_GUI">IMGUIs</a>.</p>
+
+<table>
+<tbody>
+    <tr><td>deferred_none</td><td>the deferred procedure takes _none_ of the parameters from the original procedure</td></tr>
+    <tr><td>deferred_in</td><td>the deferred procedure takes the _input_ parameters from the original procedure</td></tr>
+    <tr><td>deferred_out</td><td>the deferred procedure takes the _return_ values from the original procedure</td></tr>
+</tbody>
+</table>
+
+<p>Example:</p>
+
+<pre><code class="language-odin">begin_menu :: proc(name: string, flags: Flags = nil) -&gt; (open: bool) {
+    ...
+}
+
+end_menu :: proc(open := true) {
+    if !open do return;
+    ...
+}
+@(deferred_out=end_menu)
+menu :: proc(name: string, flags: Flags = nil) -&gt; (open: bool) {
+    return begin_menu(name, flags);
+}
+
+
+if begin_menu(&quot;Hello&quot;) {
+    defer end_menu();
+}
+
+if menu(&quot;Hello&quot;) {
+
+}
 </code></pre>
 
 
