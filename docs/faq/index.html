@@ -450,7 +450,12 @@ My_Int :: distinct int;
 <h3 id="how-do-i-define-a-procedure-with-a-different-calling-convention">How do I define a procedure with a different calling convention?</h3>
 
 <pre><code class="language-odin">proc &quot;c&quot; ()
+proc &quot;cdecl&quot; ()
 proc &quot;stdcall&quot; ()
+proc &quot;fastcall&quot; ()
+proc &quot;odin&quot; ()
+proc &quot;contextless&quot; ()
+proc &quot;none&quot; ()
 </code></pre>
 
 <h3 id="does-odin-have-closures">Does Odin have closures?</h3>
@@ -496,7 +501,7 @@ proc &quot;stdcall&quot; ()
 
 <p><code>free</code> deallocates memory</p>
 
-<pre><code class="language-odin">ptr := new(int);
+<pre><code class="language-odin">ptr: ^int = new(int);
 free(ptr);
 </code></pre>
 
