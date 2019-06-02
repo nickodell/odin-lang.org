@@ -992,7 +992,7 @@ y: int = ---; // uses uninitialized memory
 
 <p>The <code>cstring</code> type is a c-style string value, which is zero-terminated. It is equivalent to <code>char const *</code> in C. Its primary purpose is for easy interfacing with C. Please see the <a href="#foreign-system">foreign system</a> for more information.</p>
 
-<p>A <code>cstring</code> is easily convertable to an Odin <code>string</code> however, to convert a <code>string</code> to a <code>cstring</code> it requires allocations if the value is not constant.</p>
+<p>A <code>cstring</code> is easily convertible to an Odin <code>string</code> however, to convert a <code>string</code> to a <code>cstring</code> it requires allocations if the value is not constant.</p>
 
 <pre><code class="language-odin">str:  string  = &quot;Hellope&quot;;
 cstr: cstring = &quot;Hellope&quot;; // constant literal;
